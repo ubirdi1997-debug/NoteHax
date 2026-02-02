@@ -99,7 +99,9 @@ final archivedNotesProvider = Provider<List<NoteModel>>((ref) {
 
 final timeCapsuleNotesProvider = Provider<List<NoteModel>>((ref) {
   final notes = ref.watch(notesProvider);
-  return notes.where((note) => note.isTimeCapsule).toList()
+  return notes.where((note) => 
+    note.unlockDate != null && note.unlockDate!.isAfter(DateTime.now())
+  ).toList()
     ..sort((a, b) => a.unlockDate!.compareTo(b.unlockDate!));
 });
 

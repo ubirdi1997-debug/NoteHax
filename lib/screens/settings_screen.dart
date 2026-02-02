@@ -59,7 +59,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'PIN Lock',
             subtitle: _hasPin ? 'Change PIN' : 'Set up PIN',
             onTap: () {
-              // TODO: Implement PIN setup
+              // TODO: Implement PIN setup with dialog
+              // This will show a PIN entry screen to set/change PIN
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('PIN setup coming soon!'),
+                ),
+              );
             },
           ),
 
@@ -76,7 +82,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Restore Notes',
             subtitle: 'Import from backup',
             onTap: () {
-              // TODO: Implement restore
+              // TODO: Implement file picker to select and restore backup
+              // This will use file_picker package to select JSON backup file
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Restore feature coming soon!'),
+                ),
+              );
             },
           ),
 

@@ -76,43 +76,54 @@ class BackupService {
       int importedCount = 0;
       
       for (final noteData in notesList) {
-        final note = NoteModel(
-          id: noteData['id'] as String,
-          title: noteData['title'] as String,
-          content: noteData['content'] as String,
-          createdAt: DateTime.parse(noteData['createdAt'] as String),
-          updatedAt: DateTime.parse(noteData['updatedAt'] as String),
-          tags: List<String>.from(noteData['tags'] ?? []),
-          backgroundColor: noteData['backgroundColor'] as String? ?? '#1E1E1E',
-          fontStyle: noteData['fontStyle'] as String? ?? 'default',
-          isLocked: noteData['isLocked'] as bool? ?? false,
-          isPinned: noteData['isPinned'] as bool? ?? false,
-          unlockDate: noteData['unlockDate'] != null
-              ? DateTime.parse(noteData['unlockDate'] as String)
-              : null,
-          imagePaths: List<String>.from(noteData['imagePaths'] ?? []),
-          isChecklist: noteData['isChecklist'] as bool? ?? false,
-          checklistItems: (noteData['checklistItems'] as List?)
-                  ?.map((item) => ChecklistItem(
-                        text: item['text'] as String,
-                        isCompleted: item['isCompleted'] as bool,
-                      ))
-                  .toList() ??
-              [],
-          reminderDate: noteData['reminderDate'] != null
-              ? DateTime.parse(noteData['reminderDate'] as String)
-              : null,
-          isArchived: noteData['isArchived'] as bool? ?? false,
-          isFavorite: noteData['isFavorite'] as bool? ?? false,
-        );
-        
-        await notesBox.put(note.id, note);
-        importedCount++;
+        try {
+          final note = NoteModel(
+            id: noteData['id'] as String,
+            title: noteData['title'] as String,
+            content: noteData['content'] as String,
+            createdAt: DateTime.parse(noteData['createdAt'] as String),
+            updatedAt: DateTime.parse(noteData['updatedAt'] as String),
+            tags: List<String>.from(noteData['tags'] ?? []),
+            backgroundColor: noteData['backgroundColor'] as String? ?? '#1E1E1E',
+            fontStyle: noteData['fontStyle'] as String? ?? 'default',
+            isLocked: noteData['isLocked'] as bool? ?? false,
+            isPinned: noteData['isPinned'] as bool? ?? false,
+            unlockDate: noteData['unlockDate'] != null
+                ? DateTime.parse(noteData['unlockDate'] as String)
+                : null,
+            imagePaths: List<String>.from(noteData['imagePaths'] ?? []),
+            isChecklist: noteData['isChecklist'] as bool? ?? false,
+            checklistItems: (noteData['checklistItems'] as List?)
+                    ?.map((item) => ChecklistItem(
+                          text: item['text'] as String,
+                          isCompleted: item['isCompleted'] as bool,
+                        ))
+                    .toList() ??
+                [],
+            reminderDate: noteData['reminderDate'] != null
+                ? DateTime.parse(noteData['reminderDate'] as String)
+                : null,
+            isArchived: noteData['isArchived'] as bool? ?? false,
+            isFavorite: noteData['isFavorite'] as bool? ?? false,
+          );
+          
+          await notesBox.put(note.id, note);
+          importedCount++;
+        } catch (noteError) {
+          // Skip this note and continue with others
+          print('Failed to import note: ${noteData['id']} - Error: $noteError');
+        }
       }
       
       return importedCount;
     } catch (e) {
-      throw Exception('Failed to import notes: $e');
+      if (e is FormatException) {
+        throw Exception('Invalid JSON format: ${e.message}');
+      } else if (e is TypeError) {
+        throw Exception('Data type mismatch in backup file: ${e.toString()}');
+      } else {
+        throw Exception('Failed to import notes: ${e.toString()}');
+      }
     }
   }
 

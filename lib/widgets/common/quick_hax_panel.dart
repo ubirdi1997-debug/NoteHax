@@ -173,19 +173,25 @@ class _QuickHaxPanelState extends ConsumerState<QuickHaxPanel>
   }
 
   void _createVoiceNote() {
-    // TODO: Implement voice to text
+    // TODO: Implement voice to text feature
+    // This will use speech_to_text package to convert voice to text
+    // For now, opens a new note editor
     _createNewNote();
     _toggle();
   }
 
   void _scanText() {
-    // TODO: Implement OCR scanning
+    // TODO: Implement OCR scanning feature
+    // This will use google_mlkit_text_recognition to scan text from camera
+    // For now, opens a new note editor
     _createNewNote();
     _toggle();
   }
 
   void _pasteFromClipboard() {
-    // TODO: Implement clipboard paste
+    // TODO: Implement clipboard paste feature
+    // This will read from system clipboard and create a note with that content
+    // For now, opens a new note editor
     _createNewNote();
     _toggle();
   }

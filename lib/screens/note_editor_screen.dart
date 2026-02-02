@@ -265,13 +265,25 @@ class _NoteEditorScreenState extends ConsumerState<NoteEditorScreen> {
   void _handleMenuAction(String action) {
     switch (action) {
       case 'lock':
-        // TODO: Implement lock functionality
+        // TODO: Implement lock functionality with biometric/PIN authentication
+        // This will require user to set up security first, then lock/unlock notes
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Lock feature coming soon! Set up security in Settings first.'),
+          ),
+        );
         break;
       case 'color':
         _showColorPicker();
         break;
       case 'reminder':
-        // TODO: Implement reminder
+        // TODO: Implement reminder with flutter_local_notifications
+        // This will allow setting date/time and schedule notifications
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Reminder feature coming soon!'),
+          ),
+        );
         break;
       case 'delete':
         _confirmDelete();
