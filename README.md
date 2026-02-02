@@ -1,72 +1,114 @@
-# NoteHax
+# NoteHax - Smart Hacker Notebook
 
-A simple and elegant notes application built with Flutter.
+**Version:** 1.0.0  
+**Package:** com.notehax.usafe  
+**Developed by:** Geometic Eduservices Private Limited  
+**Support:** notehax.aarav@gmail.com
 
-## Features
+## 🎯 About NoteHax
 
-- ✨ Create, read, update, and delete notes
-- 🎨 Material Design 3 UI with light and dark theme support
-- 💾 Local SQLite database storage
-- 📱 Works on Android, iOS, and Web
-- 🔍 Clean and intuitive interface
-- ⚡ Fast and responsive
+NoteHax is a modern, fast, offline-first Flutter notes app with a "smart hacker notebook" theme. It combines productivity with clever automation, featuring a sleek, minimal design with dark mode, neon accents, smooth animations, and Material 3 design principles.
 
-## Prerequisites
+## ✨ Features
 
-Before you begin, ensure you have the following installed:
+### 🧠 Smart Notes Engine
+- **Auto-detection**: Automatically detects phone numbers, emails, and URLs in your notes
+- **Tap-to-Action**: Tap phone numbers to call, emails to compose mail, URLs to open browser
+- **Hashtag System**: Use #tags to organize notes automatically
+- **Auto-grouping**: Notes automatically group by tags
+
+### ⚡ Quick Hax Panel
+Floating action button opens quick access panel with:
+- 🎙️ Voice to note (voice-to-text)
+- 📷 Scan text from camera (OCR)
+- 📋 Paste from clipboard
+- ✅ Create checklist
+
+### 🔐 Secure Vault Notes
+- Lock notes with PIN or biometric authentication
+- Hidden notes folder for sensitive information
+- Encrypted data storage
+
+### ⏳ Time Capsule Notes
+- Set future "Unlock Date" for notes
+- Notes remain hidden until the specified date
+- Perfect for future reminders and time-based content
+
+### 🎨 Note Personalization
+- Multiple background colors
+- Custom font styles
+- Full Markdown support
+- Add images to notes
+
+### 📌 Smart Reminder Notes
+- Attach reminders to specific notes
+- Notifications open the exact note
+- Never miss important deadlines
+
+### 🔍 Instant Search Engine
+- Search inside note content
+- Search by tags
+- Filter by note type (text/checklist/locked)
+
+### ☁️ Backup System
+- Local backup export (JSON format)
+- Easy import/restore functionality
+- Google Drive ready (future feature)
+
+## 🛠️ Technology Stack
+
+- **Framework**: Flutter (3.0+)
+- **State Management**: Riverpod
+- **Local Database**: Hive
+- **Security**: flutter_secure_storage, local_auth, encrypt
+- **Smart Features**: speech_to_text, google_mlkit_text_recognition
+- **Architecture**: Clean architecture with null safety
+
+## 📱 Screens
+
+- **Splash Screen**: Beautiful branded launch screen
+- **Home Screen**: Grid/List toggle view of all notes
+- **Note Editor**: Full-featured editor with smart detection
+- **Locked Vault**: Secure area for locked notes
+- **Search Screen**: Advanced search and filtering
+- **Settings**: App configuration and preferences
+- **About Page**: Company information and features
+
+## 🎨 Design Philosophy
+
+- **Dark Theme**: Default dark mode for reduced eye strain
+- **Neon Accents**: Electric blue and green highlights
+- **Smooth Transitions**: 60fps animations throughout
+- **Glassmorphism**: Modern translucent card effects
+- **Minimal Icons**: Clean, professional iconography
+
+## 🚀 Getting Started
+
+### Prerequisites
+
 - Flutter SDK (3.0.0 or higher)
 - Dart SDK (3.0.0 or higher)
 - Android Studio / Xcode (for mobile development)
-- A code editor (VS Code, Android Studio, or IntelliJ IDEA)
 
-## Getting Started
+### Installation
 
-### 1. Clone the repository
-
+1. Clone the repository:
 ```bash
 git clone https://github.com/ubirdi1997-debug/NoteHax.git
 cd NoteHax
 ```
 
-### 2. Install dependencies
-
+2. Install dependencies:
 ```bash
 flutter pub get
 ```
 
-### 3. Run the app
-
-For Android/iOS:
+3. Run the app:
 ```bash
 flutter run
 ```
 
-For Web:
-```bash
-flutter run -d chrome
-```
-
-For a specific device:
-```bash
-flutter devices  # List available devices
-flutter run -d <device-id>
-```
-
-## Project Structure
-
-```
-lib/
-├── main.dart                    # App entry point
-├── models/
-│   └── note.dart               # Note data model
-├── screens/
-│   ├── home_screen.dart        # Main screen with notes list
-│   └── note_editor_screen.dart # Screen for creating/editing notes
-└── services/
-    └── database_service.dart   # SQLite database service
-```
-
-## Building for Production
+## 📦 Building for Production
 
 ### Android APK
 ```bash
@@ -83,36 +125,14 @@ flutter build ios --release
 flutter build web --release
 ```
 
-## Dependencies
+## 📄 License
 
-- `flutter`: Flutter SDK
-- `sqflite`: SQLite database for local storage
-- `path_provider`: For accessing device directories
-- `shared_preferences`: For storing user preferences
-- `intl`: For date formatting
-- `cupertino_icons`: iOS-style icons
+This project is developed by Geometic Eduservices Private Limited.
 
-## Development
+## 📧 Support
 
-### Running Tests
-```bash
-flutter test
-```
+For support, email: notehax.aarav@gmail.com
 
-### Analyzing Code
-```bash
-flutter analyze
-```
+---
 
-### Formatting Code
-```bash
-flutter format .
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is open source and available under the MIT License.
+**NoteHax** - Where productivity meets clever automation 🚀
