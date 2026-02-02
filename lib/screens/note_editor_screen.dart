@@ -76,7 +76,9 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
     }
   }
 
-  Future<bool> _onWillPop() async {
+  Future<void> _handlePopInvoked(bool didPop) async {
+    if (didPop) return;
+    
     if (_isModified) {
       final shouldSave = await showDialog<bool>(
         context: context,
@@ -98,17 +100,23 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
 
       if (shouldSave == true) {
         await _saveNote();
-        return true;
       }
-      return shouldSave ?? false;
+      
+      if (shouldSave != null && mounted) {
+        Navigator.pop(context);
+      }
+    } else {
+      if (mounted) {
+        Navigator.pop(context);
+      }
     }
-    return true;
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _onWillPop,
+    return PopScope(
+      canPop: !_isModified,
+      onPopInvoked: _handlePopInvoked,
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.note == null ? 'New Note' : 'Edit Note'),
