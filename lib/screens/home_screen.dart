@@ -1,165 +1,188 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:notehax/models/note.dart';
-import 'package:notehax/services/database_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:notehax/constants/app_constants.dart';
+import 'package:notehax/models/note_model.dart';
+import 'package:notehax/providers/notes_provider.dart';
 import 'package:notehax/screens/note_editor_screen.dart';
+import 'package:notehax/screens/search_screen.dart';
+import 'package:notehax/screens/settings_screen.dart';
+import 'package:notehax/widgets/common/note_card.dart';
+import 'package:notehax/widgets/common/quick_hax_panel.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final DatabaseService _databaseService = DatabaseService.instance;
-  List<Note> _notes = [];
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadNotes();
-  }
-
-  Future<void> _loadNotes() async {
-    setState(() => _isLoading = true);
-    final notes = await _databaseService.readAllNotes();
-    setState(() {
-      _notes = notes;
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _deleteNote(Note note) async {
-    await _databaseService.deleteNote(note.id!);
-    _loadNotes();
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Note deleted')),
-      );
-    }
-  }
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  bool _isGridView = true;
 
   @override
   Widget build(BuildContext context) {
+    final notes = ref.watch(activeNotesProvider);
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('NoteHax'),
-        elevation: 2,
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _notes.isEmpty
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.note_add_outlined,
-                        size: 80,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'No notes yet',
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Tap the + button to create a note',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
+      body: CustomScrollView(
+        slivers: [
+          // App Bar
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            elevation: 0,
+            backgroundColor: AppColors.primaryDark,
+            title: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
                   ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.neonBlue,
+                        AppColors.neonGreen,
+                      ],
+                    ),
+                    borderRadius: AppBorderRadius.small,
+                  ),
+                  child: Text(
+                    AppConstants.appName,
+                    style: AppTextStyles.heading3.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              // Toggle View
+              IconButton(
+                icon: Icon(
+                  _isGridView ? Icons.view_list : Icons.grid_view,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isGridView = !_isGridView;
+                  });
+                },
+              ),
+              // Search
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+              ),
+              // Settings
+              IconButton(
+                icon: const Icon(Icons.settings_outlined),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+
+          // Notes List
+          notes.isEmpty
+              ? SliverFillRemaining(
+                  child: _buildEmptyState(),
                 )
-              : ListView.builder(
-                  itemCount: _notes.length,
-                  padding: const EdgeInsets.all(8),
-                  itemBuilder: (context, index) {
-                    final note = _notes[index];
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
+              : _isGridView
+                  ? SliverPadding(
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      sliver: SliverGrid(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.85,
+                          crossAxisSpacing: AppSpacing.sm,
+                          mainAxisSpacing: AppSpacing.sm,
+                        ),
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            final note = notes[index];
+                            return NoteCard(
+                              note: note,
+                              onTap: () => _openNote(note),
+                            );
+                          },
+                          childCount: notes.length,
+                        ),
                       ),
-                      child: ListTile(
-                        title: Text(
-                          note.title,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 4),
-                            Text(
-                              note.content,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              DateFormat('MMM d, yyyy - h:mm a')
-                                  .format(note.updatedAt),
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ],
-                        ),
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  NoteEditorScreen(note: note),
-                            ),
-                          );
-                          _loadNotes();
-                        },
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete_outline),
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: const Text('Delete Note'),
-                                content: const Text(
-                                  'Are you sure you want to delete this note?',
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: const Text('Cancel'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      _deleteNote(note);
-                                    },
-                                    child: const Text('Delete'),
-                                  ),
-                                ],
+                    )
+                  : SliverPadding(
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      sliver: SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            final note = notes[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: AppSpacing.sm,
+                              ),
+                              child: NoteCard(
+                                note: note,
+                                onTap: () => _openNote(note),
+                                isListView: true,
                               ),
                             );
                           },
+                          childCount: notes.length,
                         ),
                       ),
-                    );
-                  },
-                ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const NoteEditorScreen(),
-            ),
-          );
-          _loadNotes();
-        },
-        child: const Icon(Icons.add),
+                    ),
+        ],
+      ),
+      floatingActionButton: const QuickHaxPanel(),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.note_add_outlined,
+            size: 80,
+            color: AppColors.neonBlue.withOpacity(0.5),
+          ),
+          const SizedBox(height: AppSpacing.lg),
+          Text(
+            'No Notes Yet',
+            style: AppTextStyles.heading2,
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            'Tap the + button to create your first note',
+            style: AppTextStyles.bodySecondary,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _openNote(NoteModel note) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NoteEditorScreen(note: note),
       ),
     );
   }
