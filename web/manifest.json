@@ -1,0 +1,11 @@
+{
+    "name": "NoteHax",
+    "short_name": "NoteHax",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A simple and elegant notes application built with Flutter",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}
