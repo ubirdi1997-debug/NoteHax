@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>notehax</string>
+	<string>NoteHax</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -45,5 +45,14 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Permissions -->
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is required to scan text from images for your notes</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is required for voice-to-text notes</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library access is required to add images to your notes</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Face ID is used to secure your locked notes</string>
 </dict>
 </plist>

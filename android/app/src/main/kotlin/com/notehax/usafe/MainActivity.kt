@@ -1,4 +1,4 @@
-package com.example.notehax
+package com.notehax.usafe
 
 import io.flutter.embedding.android.FlutterActivity
 
