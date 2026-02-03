@@ -2,7 +2,7 @@
 
 **Version:** 1.0.0  
 **Package:** com.notehax.usafe  
-**Developed by:** Geometic Eduservices Private Limited  
+**Developed by:** BYRON AGRO INDIA PRIVATE LIMITED  
 **Support:** notehax.aarav@gmail.com
 
 ## 🎯 About NoteHax
@@ -127,7 +127,7 @@ flutter build web --release
 
 ## 📄 License
 
-This project is developed by Geometic Eduservices Private Limited.
+This project is developed by BYRON AGRO INDIA PRIVATE LIMITED.
 
 ## 📧 Support
 

@@ -5,7 +5,7 @@ class AppConstants {
   static const String appName = 'NoteHax';
   static const String packageName = 'com.notehax.usafe';
   static const String version = '1.0.0';
-  static const String company = 'Geometic Eduservices Private Limited';
+  static const String company = 'BYRON AGRO INDIA PRIVATE LIMITED';
   static const String supportEmail = 'notehax.aarav@gmail.com';
   static const String tagline = 'Smart Hacker Notebook';
 }
