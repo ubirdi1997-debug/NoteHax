@@ -59,14 +59,14 @@ class NoteCard extends StatelessWidget {
                       ),
                     ),
                     if (note.isPinned)
-                      Icon(
+                      const Icon(
                         Icons.push_pin,
                         size: 16,
                         color: AppColors.neonBlue,
                       ),
                     if (note.isLocked)
-                      Padding(
-                        padding: const EdgeInsets.only(left: 4),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 4),
                         child: Icon(
                           Icons.lock,
                           size: 16,

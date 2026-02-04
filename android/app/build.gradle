@@ -29,17 +29,17 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.notehax.usafe"
-    compileSdkVersion 34
+    namespace "com.notehax.usafe.notehax"
+    compileSdkVersion 35
     ndkVersion flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     sourceSets {
@@ -47,9 +47,9 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.notehax.usafe"
-        minSdkVersion 23
-        targetSdkVersion 34
+        applicationId "com.notehax.usafe.notehax"
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -76,4 +76,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation "io.flutter:flutter_embedding_release"
+}

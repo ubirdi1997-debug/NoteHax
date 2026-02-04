@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:notehax/constants/app_constants.dart';
 import 'package:notehax/constants/app_theme.dart';
 import 'package:notehax/screens/splash_screen.dart';
-import 'package:notehax/services/biometric_service.dart';
 import 'package:notehax/services/encryption_service.dart';
 import 'package:notehax/services/hive_service.dart';
 

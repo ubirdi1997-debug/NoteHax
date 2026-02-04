@@ -83,7 +83,7 @@ class _SplashScreenState extends State<SplashScreen>
                       width: 120,
                       height: 120,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             AppColors.neonBlue,
                             AppColors.neonGreen,
@@ -114,7 +114,7 @@ class _SplashScreenState extends State<SplashScreen>
                         fontSize: 48,
                         fontWeight: FontWeight.bold,
                         foreground: Paint()
-                          ..shader = LinearGradient(
+                          ..shader = const LinearGradient(
                             colors: [
                               AppColors.neonBlue,
                               AppColors.neonGreen,

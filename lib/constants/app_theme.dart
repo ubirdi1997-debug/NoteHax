@@ -10,17 +10,15 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.primaryDark,
       
       // Color Scheme
-      colorScheme: ColorScheme.dark(
+      colorScheme: const ColorScheme.dark(
         primary: AppColors.neonBlue,
         secondary: AppColors.neonGreen,
         tertiary: AppColors.neonPurple,
         surface: AppColors.secondaryDark,
-        background: AppColors.primaryDark,
         error: AppColors.error,
         onPrimary: Colors.black,
         onSecondary: Colors.black,
         onSurface: AppColors.textPrimary,
-        onBackground: AppColors.textPrimary,
         onError: Colors.white,
       ),
       
@@ -50,7 +48,7 @@ class AppTheme {
       ),
       
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: const CardThemeData(
         color: AppColors.cardDark,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -63,7 +61,7 @@ class AppTheme {
       ),
       
       // Floating Action Button Theme
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.neonBlue,
         foregroundColor: Colors.black,
         elevation: 8,
@@ -73,7 +71,7 @@ class AppTheme {
       ),
       
       // Input Decoration Theme
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         filled: true,
         fillColor: AppColors.secondaryDark,
         border: OutlineInputBorder(
@@ -92,7 +90,7 @@ class AppTheme {
           borderRadius: AppBorderRadius.medium,
           borderSide: BorderSide(color: AppColors.error),
         ),
-        contentPadding: const EdgeInsets.all(AppSpacing.md),
+        contentPadding: EdgeInsets.all(AppSpacing.md),
         hintStyle: TextStyle(color: AppColors.textTertiary),
       ),
       
@@ -110,7 +108,7 @@ class AppTheme {
       ),
       
       // Bottom Navigation Bar Theme
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.secondaryDark,
         selectedItemColor: AppColors.neonBlue,
         unselectedItemColor: AppColors.textTertiary,
@@ -119,7 +117,7 @@ class AppTheme {
       ),
       
       // Dialog Theme
-      dialogTheme: DialogTheme(
+      dialogTheme: const DialogThemeData(
         backgroundColor: AppColors.secondaryDark,
         shape: RoundedRectangleBorder(
           borderRadius: AppBorderRadius.large,
@@ -128,7 +126,7 @@ class AppTheme {
       ),
       
       // Bottom Sheet Theme
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: AppColors.secondaryDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -139,7 +137,7 @@ class AppTheme {
       ),
       
       // Chip Theme
-      chipTheme: ChipThemeData(
+      chipTheme: const ChipThemeData(
         backgroundColor: AppColors.tertiaryDark,
         labelStyle: TextStyle(color: AppColors.textPrimary),
         side: BorderSide(color: AppColors.borderColor),

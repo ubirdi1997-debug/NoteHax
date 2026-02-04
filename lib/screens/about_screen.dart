@@ -20,7 +20,7 @@ class AboutScreen extends StatelessWidget {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     AppColors.neonBlue,
                     AppColors.neonGreen,
@@ -51,7 +51,7 @@ class AboutScreen extends StatelessWidget {
               AppConstants.appName,
               style: AppTextStyles.heading1.copyWith(
                 foreground: Paint()
-                  ..shader = LinearGradient(
+                  ..shader = const LinearGradient(
                     colors: [
                       AppColors.neonBlue,
                       AppColors.neonGreen,
@@ -74,7 +74,7 @@ class AboutScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.sm),
 
             // Version
-            Text(
+            const Text(
               'Version ${AppConstants.version}',
               style: AppTextStyles.caption,
             ),
@@ -122,7 +122,7 @@ class AboutScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.xxl),
 
             // Copyright
-            Text(
+            const Text(
               '© 2024 ${AppConstants.company}',
               style: AppTextStyles.caption,
               textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class AboutScreen extends StatelessWidget {
 
             const SizedBox(height: AppSpacing.sm),
 
-            Text(
+            const Text(
               'All rights reserved',
               style: AppTextStyles.caption,
               textAlign: TextAlign.center,
@@ -184,7 +184,7 @@ class AboutScreen extends StatelessWidget {
               ),
             ),
             if (onTap != null)
-              Icon(
+              const Icon(
                 Icons.arrow_forward_ios,
                 size: 16,
                 color: AppColors.textTertiary,

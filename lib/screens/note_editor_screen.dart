@@ -183,7 +183,7 @@ class _NoteEditorScreenState extends ConsumerState<NoteEditorScreen> {
                     ),
                   ),
               ],
-              onSelected: (value) => _handleMenuAction(value as String),
+              onSelected: (value) => _handleMenuAction(value),
             ),
           ],
         ),
@@ -200,7 +200,7 @@ class _NoteEditorScreenState extends ConsumerState<NoteEditorScreen> {
                     return Chip(
                       label: Text(tag),
                       backgroundColor: AppColors.neonBlue.withOpacity(0.2),
-                      labelStyle: TextStyle(color: AppColors.neonBlue),
+                      labelStyle: const TextStyle(color: AppColors.neonBlue),
                       deleteIcon: const Icon(
                         Icons.close,
                         size: 16,

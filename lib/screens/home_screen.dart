@@ -39,7 +39,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     horizontal: 12,
                     vertical: 6,
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
                         AppColors.neonBlue,
@@ -163,12 +163,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             color: AppColors.neonBlue.withOpacity(0.5),
           ),
           const SizedBox(height: AppSpacing.lg),
-          Text(
+          const Text(
             'No Notes Yet',
             style: AppTextStyles.heading2,
           ),
           const SizedBox(height: AppSpacing.sm),
-          Text(
+          const Text(
             'Tap the + button to create your first note',
             style: AppTextStyles.bodySecondary,
             textAlign: TextAlign.center,

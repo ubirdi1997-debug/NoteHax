@@ -49,7 +49,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.search,
                     size: 64,
                     color: AppColors.textTertiary,
