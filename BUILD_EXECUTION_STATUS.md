@@ -17,6 +17,25 @@ Error: End-of-central-directory signature not found
 Error: cannot find zipfile directory in dart-sdk-linux-x64.zip
 ```
 
+### Additional Environment Errors
+When attempting to run Flutter commands, you may also encounter:
+
+1. **file_picker Plugin Warnings (macOS/Windows)**:
+   ```
+   Package file_picker:macos references file_picker:macos as the default plugin,
+   but it does not provide an inline implementation.
+   
+   Package file_picker:windows references file_picker:windows as the default plugin,
+   but it does not provide an inline implementation.
+   ```
+   **Note**: These are warnings, not errors. Since we're building for Android only, these can be safely ignored. The file_picker plugin works correctly for Android builds.
+
+2. **Android SDK Not Found**:
+   ```
+   [!] No Android SDK found. Try setting the ANDROID_HOME environment variable.
+   ```
+   **Solution**: See "Setting up Android SDK" section below.
+
 ## ✅ Build Configuration Status
 
 Despite the execution issue, **all build prerequisites are properly configured**:
@@ -57,6 +76,36 @@ Since the automated build cannot complete in this environment, please run these 
 - Flutter SDK installed (https://flutter.dev/docs/get-started/install)
 - Android SDK installed
 - Java JDK 11 or higher
+
+### Setting up Android SDK
+
+If you get the error "No Android SDK found", you need to set up the Android SDK:
+
+#### Option 1: Set ANDROID_HOME environment variable
+```bash
+# Linux/macOS
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Windows (PowerShell)
+$env:ANDROID_HOME = "$env:LOCALAPPDATA\Android\Sdk"
+$env:PATH += ";$env:ANDROID_HOME\tools;$env:ANDROID_HOME\platform-tools"
+```
+
+#### Option 2: Create android/local.properties
+```bash
+# Create the file with your SDK location
+echo "sdk.dir=/path/to/android/sdk" > android/local.properties
+
+# Example paths:
+# Linux/macOS: sdk.dir=/Users/username/Android/Sdk
+# Windows: sdk.dir=C:\\Users\\username\\AppData\\Local\\Android\\Sdk
+```
+
+#### Option 3: Install Android SDK via Android Studio
+1. Download Android Studio from https://developer.android.com/studio
+2. Run Android Studio and complete the setup wizard
+3. The SDK will be automatically installed and configured
 
 ### Build Commands
 
@@ -155,6 +204,26 @@ Running Gradle task 'bundleRelease'...
 ```
 
 ## 🔧 Troubleshooting
+
+### Plugin Warnings (file_picker for macOS/Windows)
+**Error**: 
+```
+Package file_picker:macos references file_picker:macos as the default plugin...
+Package file_picker:windows references file_picker:windows as the default plugin...
+```
+
+**Solution**: These are warnings, not errors. They occur because:
+- The `file_picker` plugin has platform-specific implementations
+- We're building for Android, so macOS/Windows implementations aren't needed
+- These warnings don't affect Android builds
+
+**To suppress** (optional):
+You can ignore these warnings as they don't impact the build. The Android build will work correctly.
+
+### Android SDK Not Found
+**Error**: `[!] No Android SDK found. Try setting the ANDROID_HOME`
+
+**Solution**: Set up Android SDK (see "Setting up Android SDK" section above)
 
 ### If build fails with "SDK not found"
 Create `android/local.properties`:

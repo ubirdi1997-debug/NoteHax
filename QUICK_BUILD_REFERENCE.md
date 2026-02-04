@@ -77,6 +77,25 @@ adb install build/app/outputs/flutter-apk/app-release.apk
 
 ## 🐛 Troubleshooting
 
+### Plugin Warnings (file_picker)
+**Warning**: `Package file_picker:macos/windows references... as the default plugin`
+
+**Solution**: Safe to ignore. These warnings occur for macOS/Windows platforms we're not building for. Android builds work fine.
+
+### Android SDK Not Found
+**Error**: `[!] No Android SDK found. Try setting the ANDROID_HOME`
+
+**Solution**: Set ANDROID_HOME or create `android/local.properties`:
+```bash
+# Set environment variable (Linux/macOS)
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Or create android/local.properties
+echo "sdk.dir=/path/to/android/sdk" > android/local.properties
+# Example: sdk.dir=/Users/username/Android/Sdk
+```
+
 ### Gradle Error
 ```bash
 cd android && ./gradlew clean && cd ..
