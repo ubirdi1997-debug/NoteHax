@@ -110,9 +110,50 @@ flutter run
 
 ## 📦 Building for Production
 
-### Android APK
+### Quick Build (Recommended)
+
+NoteHax includes automated build scripts for easy release builds:
+
+**Linux/macOS:**
+```bash
+./build_release.sh
+```
+
+**Windows:**
+```cmd
+build_release.bat
+```
+
+These scripts will:
+- ✅ Verify Flutter and Android SDK installation
+- ✅ Clean previous builds
+- ✅ Fetch all dependencies
+- ✅ Generate required code (Hive adapters)
+- ✅ Build release APK/AAB with signing
+- ✅ Verify build outputs
+
+### Manual Build Commands
+
+#### Android APK (for testing/sideloading)
 ```bash
 flutter build apk --release
+```
+Output: `build/app/outputs/flutter-apk/app-release.apk`
+
+#### Android App Bundle (for Play Store - **REQUIRED**)
+```bash
+flutter build appbundle --release
+```
+Output: `build/app/outputs/bundle/release/app-release.aab`
+
+#### Split APKs (smaller size per architecture)
+```bash
+flutter build apk --release --split-per-abi
+```
+
+#### With Code Obfuscation (Production Recommended)
+```bash
+flutter build appbundle --release --obfuscate --split-debug-info=build/symbols
 ```
 
 ### iOS IPA
@@ -124,6 +165,31 @@ flutter build ios --release
 ```bash
 flutter build web --release
 ```
+
+## 📚 Complete Documentation
+
+For detailed setup and build instructions, see:
+
+- **[SETUP_COMPLETE.md](SETUP_COMPLETE.md)** - Complete setup status and instructions
+- **[BUILD_EXECUTION_STATUS.md](BUILD_EXECUTION_STATUS.md)** - Environment setup guide
+- **[QUICK_BUILD_REFERENCE.md](QUICK_BUILD_REFERENCE.md)** - Quick command reference
+- **[BUILD_VERIFICATION.md](BUILD_VERIFICATION.md)** - Build verification checklist
+- **[play_console_assets/](play_console_assets/)** - Play Store submission guides
+
+## 🔐 Release Configuration
+
+NoteHax is **fully configured** for release builds:
+
+✅ **Signing Keys**: Configured in `android/key.jks` and `android/key.properties`  
+✅ **App Icons**: All Android density variants (mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi)  
+✅ **Build Configuration**: Release signing enabled in `android/app/build.gradle`  
+✅ **Dependencies**: All packages defined and ready in `pubspec.yaml`  
+✅ **Play Store Assets**: Complete store listing and submission documentation
+
+**Package Name**: `com.notehax.usafe.notehax`  
+**Version**: 1.0.0+1  
+**Min SDK**: Android 6.0 (API 23)  
+**Target SDK**: Android 14 (API 34)
 
 ## 📄 License
 
