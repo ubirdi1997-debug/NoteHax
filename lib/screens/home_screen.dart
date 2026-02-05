@@ -7,7 +7,6 @@ import 'package:notehax/screens/note_editor_screen.dart';
 import 'package:notehax/screens/search_screen.dart';
 import 'package:notehax/screens/settings_screen.dart';
 import 'package:notehax/widgets/common/note_card.dart';
-import 'package:notehax/widgets/common/quick_hax_panel.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -148,7 +147,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
         ],
       ),
-      floatingActionButton: const QuickHaxPanel(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _createNewNote,
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  void _createNewNote() {
+    final notesNotifier = ref.read(notesProvider.notifier);
+    final note = NoteModel(
+      id: notesNotifier.generateId(),
+      title: '',
+      content: '',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+    
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NoteEditorScreen(note: note, isNew: true),
+      ),
     );
   }
 

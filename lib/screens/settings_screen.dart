@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:notehax/constants/app_constants.dart';
 import 'package:notehax/screens/about_screen.dart';
 import 'package:notehax/services/backup_service.dart';
-import 'package:notehax/services/biometric_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -12,26 +11,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool _biometricsEnabled = false;
-  bool _hasPin = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadSettings();
-  }
-
-  Future<void> _loadSettings() async {
-    final biometricsEnabled =
-        await BiometricService.instance.isBiometricsEnabled();
-    final hasPin = await BiometricService.instance.hasPin();
-
-    setState(() {
-      _biometricsEnabled = biometricsEnabled;
-      _hasPin = hasPin;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,35 +19,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          // Security Section
-          _buildSectionHeader('Security'),
-          _buildSettingTile(
-            icon: Icons.fingerprint,
-            title: 'Biometric Lock',
-            subtitle: 'Use fingerprint or face ID',
-            trailing: Switch(
-              value: _biometricsEnabled,
-              onChanged: (value) async {
-                await BiometricService.instance.setBiometricsEnabled(value);
-                setState(() => _biometricsEnabled = value);
-              },
-            ),
-          ),
-          _buildSettingTile(
-            icon: Icons.pin,
-            title: 'PIN Lock',
-            subtitle: _hasPin ? 'Change PIN' : 'Set up PIN',
-            onTap: () {
-              // TODO: Implement PIN setup with dialog
-              // This will show a PIN entry screen to set/change PIN
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('PIN setup coming soon!'),
-                ),
-              );
-            },
-          ),
-
           // Backup Section
           _buildSectionHeader('Backup & Restore'),
           _buildSettingTile(
