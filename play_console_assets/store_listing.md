@@ -6,108 +6,114 @@
 **NoteHax - Smart Notes & Secure Vault**
 
 ### Short Description (80 characters max)
-Smart note-taking with encryption, voice notes, OCR scanning & time capsules
+Smart notes with AES encryption, voice-to-text, OCR, time capsules & reminders
 
 ### Full Description (4000 characters max)
 
-**NoteHax** is your ultimate smart notebook that combines powerful note-taking with clever automation and top-notch security. Perfect for professionals, students, and anyone who wants to keep their thoughts organized and secure.
+**NoteHax** — the smart hacker notebook that transforms how you capture, organize, and protect your ideas. Built with Riverpod state management and Hive local storage for blazing-fast, offline-first performance.
 
-**✨ KEY FEATURES**
+**✨ CORE FEATURES**
 
 🧠 **Smart Notes Engine**
-• Auto-detect phone numbers, emails, and URLs in your notes
-• Tap phone numbers to call, emails to send mail, URLs to browse
-• Hashtag system (#work #ideas #todo) for instant organization
-• Auto-grouping of notes by tags
+• Auto-detect phone numbers, emails, URLs, and hashtags
+• Tap-to-action: call numbers, email contacts, open links instantly
+• Automatic hashtag extraction (#work #ideas #todo #goals)
+• Notes auto-group by tags for effortless organization
+• Pin important notes to keep them at the top
+• Mark favorites for quick access
 
 ⚡ **Quick Hax Panel**
-• Voice to note - Convert speech to text instantly
-• OCR scanning - Extract text from photos using your camera
-• Paste from clipboard - Quick note creation
-• Create checklists with one tap
+• Voice-to-text: Speak your thoughts, we transcribe them
+• OCR scanning: Extract text from images using Google ML Kit
+• Instant clipboard paste for quick note creation
+• One-tap checklist creation with interactive checkboxes
 
-🔐 **Secure Vault Notes**
-• Lock notes with PIN or biometric authentication
-• AES-256 encryption for maximum security
-• Hidden notes folder for sensitive information
-• Secure storage that stays on your device only
+🔐 **Secure Vault**
+• AES-256 military-grade encryption
+• Biometric authentication (fingerprint & face ID)
+• PIN protection with secure storage
+• Hidden vault folder for sensitive notes
+• All encryption happens locally on device
 
 ⏳ **Time Capsule Notes**
-• Set future "Unlock Date" for notes
-• Notes remain hidden until the specified date
-• Perfect for future reminders, goals, and time-based content
+• Set future unlock dates for notes
+• Notes remain completely hidden until the date arrives
+• Perfect for goals, future self-reminders, or surprises
+• Countdown display for anticipation
 
-🎨 **Note Personalization**
-• Multiple background colors for organization
+🎨 **Full Personalization**
+• 7 beautiful background colors per note
 • Custom font styles for different note types
-• Full Markdown support for rich formatting
-• Add images to notes for visual context
+• Complete Markdown support for rich formatting
+• Embed images directly into notes
+• Grid or list view toggle on home screen
 
 📌 **Smart Reminders**
-• Attach reminders to specific notes
-• Notifications open the exact note you need
-• Never miss important deadlines or tasks
+• Attach reminders to any note
+• Local notifications open the exact note
+• Never miss deadlines, meetings, or tasks
+• Timezone-aware scheduling
 
-🔍 **Instant Search Engine**
-• Search inside note content in real-time
-• Search by tags for quick filtering
-• Filter by type: text, checklist, or locked notes
+🔍 **Powerful Search**
+• Real-time content search across all notes
+• Filter by hashtags, note type, or status
+• Search locked notes (with authentication)
+• Find archived and active notes separately
 
-☁️ **Backup System**
-• Local backup export in JSON format
-• Easy import/restore functionality
-• Your data stays under your control
-• No cloud storage required
+💾 **Backup & Restore**
+• Export all notes to JSON format
+• Import backups with one tap
+• Share backups via any app
+• Complete data portability
 
-**🎯 WHY NOTEHAX?**
+**🎯 WHY CHOOSE NOTEHAX?**
 
-✓ **Privacy First**: All data stored locally on your device
-✓ **Offline-first**: Works perfectly without internet
-✓ **No Ads**: Clean, distraction-free experience
-✓ **No Tracking**: We don't collect or share your data
-✓ **Modern Design**: Dark theme with smooth animations
-✓ **Lightning Fast**: Instant search and smooth performance
+✓ **100% Offline**: No internet required, ever
+✓ **Zero Ads**: Completely ad-free experience
+✓ **No Tracking**: We collect absolutely nothing
+✓ **Local Storage Only**: Your data never leaves your device
+✓ **Material 3 Design**: Modern, clean, professional UI
+✓ **60fps Animations**: Buttery smooth throughout
+✓ **Dark Theme**: Easy on eyes with neon accents
+✓ **Free Updates**: New features added regularly
 
 **📱 PERFECT FOR:**
-• Students taking class notes
-• Professionals managing tasks and ideas
-• Creative writers brainstorming
-• Anyone who values privacy and organization
+• Students capturing lecture notes
+• Professionals tracking tasks and ideas
+• Writers brainstorming creatively
+• Privacy-conscious users
+• Anyone who values organization
 
-**🔒 SECURITY YOU CAN TRUST**
-• Industry-standard AES-256 encryption
-• Biometric authentication (fingerprint/face ID)
-• PIN protection for quick access
-• Secure storage using Flutter Secure Storage
-• No data transmission to external servers
-
-**🌟 WHAT USERS SAY:**
-"The time capsule feature is genius! Perfect for setting goals and reflecting on them later."
-"Finally, a notes app that respects my privacy. Everything stays on my device!"
-"The smart detection of phone numbers and emails saves me so much time."
-
-**💡 SMART AUTOMATION**
-NoteHax automatically detects actionable content in your notes:
-• Phone numbers become tap-to-call links
-• Email addresses open your mail app
-• URLs open in your browser
-• Hashtags organize your notes automatically
+**🔒 SECURITY ARCHITECTURE**
+• AES-256 encryption via encrypt package
+• Flutter Secure Storage for credentials
+• local_auth for biometric verification
+• No server communication whatsoever
+• Open security approach
 
 **🎨 DESIGN PHILOSOPHY**
-Clean, minimal interface with a "smart hacker notebook" theme. Dark mode by default with neon accent colors (electric blue and green) for a modern, sleek look that's easy on the eyes.
+Sleek dark theme with electric blue and neon green accents. Glassmorphism effects, smooth transitions, and a minimal interface that puts your content first. Built with Material 3 design principles.
 
-**🚀 COMING SOON**
-• Google Drive backup integration
-• Note sharing with encryption
-• Advanced OCR with multiple languages
-• Collaborative notes
-• Widget support
+**📦 TECHNICAL EXCELLENCE**
+• Built with Flutter 3.0+ and Dart
+• Riverpod for reactive state management
+• Hive database for instant local storage
+• Google ML Kit for OCR accuracy
+• speech_to_text for voice recognition
+• Clean architecture with null safety
 
-Download NoteHax today and experience the future of note-taking!
+**🚀 ROADMAP**
+• Google Drive cloud backup
+• Encrypted note sharing
+• Multi-language OCR
+• Home screen widgets
+• Custom themes
+
+Download NoteHax and take control of your notes with security and style!
 
 ---
 
 **Developer**: BYRON AGRO INDIA PRIVATE LIMITED
 **Support**: notehax.aarav@gmail.com
-**Privacy Policy**: Available at https://yourwebsite.com/privacy.html
+**Privacy Policy**: https://yourwebsite.com/privacy.html
 
