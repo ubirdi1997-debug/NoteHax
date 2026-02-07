@@ -3,10 +3,10 @@
 ## App Information
 
 ### Title
-**NoteHax - Smart Notes & Secure Vault**
+**NoteHax - Smart Notes & Time Capsules**
 
 ### Short Description (80 characters max)
-Smart notes with AES encryption, voice-to-text, OCR, time capsules & reminders
+Smart notes with voice-to-text, OCR scanning, time capsules & smart reminders
 
 ### Full Description (4000 characters max)
 
@@ -27,13 +27,6 @@ Smart notes with AES encryption, voice-to-text, OCR, time capsules & reminders
 • OCR scanning: Extract text from images using Google ML Kit
 • Instant clipboard paste for quick note creation
 • One-tap checklist creation with interactive checkboxes
-
-🔐 **Secure Vault**
-• AES-256 military-grade encryption
-• Biometric authentication (fingerprint & face ID)
-• PIN protection with secure storage
-• Hidden vault folder for sensitive notes
-• All encryption happens locally on device
 
 ⏳ **Time Capsule Notes**
 • Set future unlock dates for notes
@@ -57,7 +50,6 @@ Smart notes with AES encryption, voice-to-text, OCR, time capsules & reminders
 🔍 **Powerful Search**
 • Real-time content search across all notes
 • Filter by hashtags, note type, or status
-• Search locked notes (with authentication)
 • Find archived and active notes separately
 
 💾 **Backup & Restore**
@@ -84,12 +76,11 @@ Smart notes with AES encryption, voice-to-text, OCR, time capsules & reminders
 • Privacy-conscious users
 • Anyone who values organization
 
-**🔒 SECURITY ARCHITECTURE**
-• AES-256 encryption via encrypt package
-• Flutter Secure Storage for credentials
-• local_auth for biometric verification
+**🔒 PRIVACY & DATA**
+• All data stored locally on your device
 • No server communication whatsoever
-• Open security approach
+• No accounts or sign-ups required
+• Complete offline functionality
 
 **🎨 DESIGN PHILOSOPHY**
 Sleek dark theme with electric blue and neon green accents. Glassmorphism effects, smooth transitions, and a minimal interface that puts your content first. Built with Material 3 design principles.
@@ -109,7 +100,7 @@ Sleek dark theme with electric blue and neon green accents. Glassmorphism effect
 • Home screen widgets
 • Custom themes
 
-Download NoteHax and take control of your notes with security and style!
+Download NoteHax and take control of your notes with style and intelligence!
 
 ---
 
